@@ -1,3 +1,5 @@
+package com.tanuri.commerce.domain;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -83,4 +85,16 @@ public class ProdutoTest {
         // ASSERT: Garante que o valor não foi alterado
         assertEquals(5, produto.getEstoque());
     }
+
+    @Test
+    void darBaixaEstoque_deveLancarExcecao_quandoEstoqueInsuficiente(){
+        Produto produto = new Produto("Item", "Desc", 10.0, 5);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            produto.darBaixaEstoque(10);
+        });
+
+        assertEquals(5, produto.getEstoque());
+    }
+
 }
