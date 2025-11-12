@@ -1,3 +1,5 @@
+package com.ada.t1420.supermercado.domain;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 

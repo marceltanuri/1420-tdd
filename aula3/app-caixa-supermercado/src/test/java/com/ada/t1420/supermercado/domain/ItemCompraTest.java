@@ -1,11 +1,11 @@
+package com.ada.t1420.supermercado.domain;
+
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
-// As classes 'Produto' e 'ItemCompra' ainda não existem, este é o Teste (RED)
 class ItemCompraTest {
 
-    // Cenário: Cálculo de Subtotal (Lógica Pura)
     @Test
     void deveCalcularSubtotalCorretamente() {
         // Entrada: Produto R$ 10.00, Quantidade 3
@@ -14,11 +14,12 @@ class ItemCompraTest {
         Produto produto = new Produto("PRD1", "Arroz 5kg", new BigDecimal("10.00"));
         int quantidade = 3;
         
+        // Resultado Esperado: Subtotal deve ser R$ 30.00 (10.00 * 3)
+        BigDecimal subtotalEsperado = new BigDecimal("30.00");
+        
         // Ação: Criar o ItemCompra
         ItemCompra item = new ItemCompra(produto, quantidade);
         
-        // Resultado Esperado: Subtotal deve ser R$ 30.00 (10.00 * 3)
-        BigDecimal subtotalEsperado = new BigDecimal("30.00");
         
         // Verificação
         assertEquals(0, subtotalEsperado.compareTo(item.getSubtotal()), 
