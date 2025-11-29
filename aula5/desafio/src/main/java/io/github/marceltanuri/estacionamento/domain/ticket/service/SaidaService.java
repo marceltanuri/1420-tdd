@@ -17,13 +17,15 @@ public class SaidaService {
     private static final LocalTime HORARIO_DE_ABERTURA = LocalTime.of(8, 0);
     private static final LocalTime HORARIO_DE_FECHAMENTO = LocalTime.of(22, 0);
     private final TicketRepository ticketRepository;
+    private final java.time.Clock clock;
 
-
-    public SaidaService(TicketRepository ticketRepository) {
+    public SaidaService(TicketRepository ticketRepository, java.time.Clock clock) {
         this.ticketRepository = ticketRepository;
+        this.clock = clock;
     }
 
-    public void processarSaida(Ticket ticket, LocalDateTime dataHoraSaida) {
+    public void processarSaida(Ticket ticket) {
+        LocalDateTime dataHoraSaida = LocalDateTime.now(clock);
         if (dataHoraSaida.isBefore(ticket.getEntrada())) {
             throw new IllegalStateException("Ticket não pode ser finalizado antes da entrada.");
         }

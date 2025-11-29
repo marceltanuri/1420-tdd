@@ -17,6 +17,15 @@ public class Ticket {
     private Ticket() {
     }
 
+    public Ticket(String id, Veiculo veiculo, LocalDateTime entrada, LocalDateTime saida, LocalDateTime pagamento, Status status) {
+        this.id = id;
+        this.veiculo = veiculo;
+        this.entrada = entrada;
+        this.saida = saida;
+        this.pagamento = pagamento;
+        this.status = status;
+    }
+
     public static Ticket novo(Veiculo veiculo, LocalDateTime entrada) {
         Ticket ticket = new Ticket();
         ticket.veiculo = veiculo;
